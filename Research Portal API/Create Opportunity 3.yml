@@ -1,0 +1,29 @@
+info:
+  name: Create Opportunity 3
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: http://localhost:3000/api/opportunities
+  body:
+    type: json
+    data: |-
+      {
+        "title": "Machine Learning for Crop Disease Detection",
+        "description": "Work on a model that identifies diseases in crop leaf images using deep learning.",
+        "research_area": "Artificial Intelligence",
+        "faculty_name": "Dr. Sara Khan",
+        "department": "Computer Science",
+        "required_skills": "Python, TensorFlow, Image Processing",
+        "positions": 2,
+        "deadline": "2026-12-15"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

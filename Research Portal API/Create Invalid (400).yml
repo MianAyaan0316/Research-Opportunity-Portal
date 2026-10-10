@@ -1,0 +1,24 @@
+info:
+  name: Create Invalid (400)
+  type: http
+  seq: 10
+
+http:
+  method: POST
+  url: http://localhost:3000/api/opportunities
+  body:
+    type: json
+    data: |-
+      {
+        "title": "",
+        "positions": -5,
+        "deadline": "tomorrow"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
