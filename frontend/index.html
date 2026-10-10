@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Research Opportunity Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <h1>Research Opportunity Portal</h1>
+    <p>FAST-NUCES, Peshawar Campus</p>
+  </header>
+
+  <main>
+
+    <div id="message" class="message hidden"></div>
+
+    <!-- Add / Edit form -->
+    <section id="formSection" class="panel hidden">
+      <h2 id="formTitle">New Opportunity</h2>
+
+      <form id="oppForm" novalidate>
+        <input type="hidden" id="oppId">
+
+        <div class="grid">
+          <div class="field">
+            <label for="title">Research title</label>
+            <input type="text" id="title">
+            <span class="error" id="err_title"></span>
+          </div>
+
+          <div class="field">
+            <label for="faculty_name">Faculty member</label>
+            <input type="text" id="faculty_name">
+            <span class="error" id="err_faculty_name"></span>
+          </div>
+
+          <div class="field">
+            <label for="research_area">Research area</label>
+            <input type="text" id="research_area">
+            <span class="error" id="err_research_area"></span>
+          </div>
+
+          <div class="field">
+            <label for="department">Department</label>
+            <input type="text" id="department">
+            <span class="error" id="err_department"></span>
+          </div>
+
+          <div class="field">
+            <label for="required_skills">Required skills</label>
+            <input type="text" id="required_skills" placeholder="e.g. Python, SQL">
+            <span class="error" id="err_required_skills"></span>
+          </div>
+
+          <div class="field">
+            <label for="positions">Available positions</label>
+            <input type="number" id="positions" min="1">
+            <span class="error" id="err_positions"></span>
+          </div>
+
+          <div class="field">
+            <label for="deadline">Application deadline</label>
+            <input type="date" id="deadline">
+            <span class="error" id="err_deadline"></span>
+          </div>
+
+          <div class="field">
+            <label for="status">Status</label>
+            <select id="status">
+              <option value="Open">Open</option>
+              <option value="Closed">Closed</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="description">Description</label>
+          <textarea id="description" rows="4"></textarea>
+          <span class="error" id="err_description"></span>
+        </div>
+
+        <div class="form-buttons">
+          <button type="submit" class="btn primary" id="saveBtn">Save</button>
+          <button type="button" class="btn" id="cancelBtn">Cancel</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Details view -->
+    <section id="detailsSection" class="panel hidden">
+      <h2>Opportunity Details</h2>
+      <dl id="detailsList"></dl>
+      <button type="button" class="btn" id="closeDetailsBtn">Back to list</button>
+    </section>
+
+    <!-- List -->
+    <section class="toolbar">
+      <h2>All Opportunities</h2>
+      <button type="button" class="btn primary" id="newBtn">Add new opportunity</button>
+    </section>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Faculty</th>
+            <th>Area</th>
+            <th>Positions</th>
+            <th>Deadline</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="oppBody">
+          <tr><td colspan="8" class="empty">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
