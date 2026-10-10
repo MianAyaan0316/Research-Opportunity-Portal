@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Test route: checks that the server AND database both work
+// Health check
 app.get('/api/health', async (req, res) => {
   try {
     await pool.query('SELECT 1');
@@ -17,6 +17,18 @@ app.get('/api/health', async (req, res) => {
     console.error(err);
     res.status(500).json({ message: 'Database connection failed' });
   }
+});
+
+// All opportunity routes live under /api/opportunities
+app.use('/api/opportunities', require('./routes/opportunities'));
+
+// Catches broken JSON sent by the client
+app.use((err, req, res, next) => {
+  if (err.type === 'entity.parse.failed') {
+    return res.status(400).json({ message: 'Invalid JSON in request body' });
+  }
+  console.error(err);
+  res.status(500).json({ message: 'Something went wrong on the server' });
 });
 
 const PORT = process.env.PORT || 3000;
