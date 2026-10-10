@@ -1,12 +1,16 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const pool = require('./db');
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+// Shows the frontend page
+app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Health check
 app.get('/api/health', async (req, res) => {
